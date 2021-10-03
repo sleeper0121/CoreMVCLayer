@@ -9,17 +9,20 @@ namespace Service.EF
     public class DepartmentService : IDepartmentService
     {
         private readonly IRepository<Department> _deptRepo;
-
         public DepartmentService(IRepository<Department> deptRepo)
         {
             this._deptRepo = deptRepo;
         }
-
+        //public DepartmentService()
+        //{
+        //    this._deptRepo = RepositoryHelper.GetDepartmentRepository();
+        //}
         public bool Create(Department department)
         {
             if (department != null)
             {
                 _deptRepo.Add(department);
+                _deptRepo.UnitOfWork.Commit();
                 return true;
             }
             else
@@ -34,6 +37,7 @@ namespace Service.EF
             {
                 var entity = _deptRepo.Find(s => s.DepartmentId == id);
                 _deptRepo.Delete(entity);
+                _deptRepo.UnitOfWork.Commit();
                 return true;
             }
             catch (Exception e)
@@ -59,6 +63,7 @@ namespace Service.EF
             try
             {
                 _deptRepo.Update(department);
+                _deptRepo.UnitOfWork.Commit();
                 return true;
             }
             catch (Exception e)

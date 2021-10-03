@@ -9,6 +9,8 @@ namespace Repository.EF
 {
     public interface IRepository<TEntity>
     {
+        IUnitOfWork UnitOfWork { get; set; }
+
         IEnumerable<TEntity> GetAll();
         TEntity Get(long id);
 
