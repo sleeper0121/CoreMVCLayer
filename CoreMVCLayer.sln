@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.EF", "Models.EF\Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.EF", "Repository.EF\Repository.EF.csproj", "{877130C4-6D70-43DA-AB17-5AB53758E967}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.EF", "Service.EF\Service.EF.csproj", "{00C1C107-B6C1-47D1-AE9F-C9AF943A5DC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{877130C4-6D70-43DA-AB17-5AB53758E967}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{877130C4-6D70-43DA-AB17-5AB53758E967}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{877130C4-6D70-43DA-AB17-5AB53758E967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00C1C107-B6C1-47D1-AE9F-C9AF943A5DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C1C107-B6C1-47D1-AE9F-C9AF943A5DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C1C107-B6C1-47D1-AE9F-C9AF943A5DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C1C107-B6C1-47D1-AE9F-C9AF943A5DC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,28 +5,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Models.EF;
+using Service.EF;
+
 namespace CoreMVCLayer.Controllers
 {
     public class DepartmentsController : Controller
     {
-        ContosoUniversityContext context;
+        IDepartmentService deptService;
 
-        public DepartmentsController(ContosoUniversityContext _context)
+        public DepartmentsController(IDepartmentService _deptService)
         {
-            context = _context;
+            deptService = _deptService;
         }
-
 
         // GET: DepartmentsController
         public ActionResult Index()
         {
-            var data = context.Departments.ToList();
+            var data = deptService.GetAll();
             return View(data);
         }
 
         // GET: DepartmentsController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             return View();
         }
 
