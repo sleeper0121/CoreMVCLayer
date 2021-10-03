@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Models.EF;
 using Service.EF;
+using Omu.ValueInjecter;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoreMVCLayer.Controllers
 {
@@ -29,11 +31,14 @@ namespace CoreMVCLayer.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            return View();
+            var data = deptService.FindById(id.Value);
+
+            if (data == null)
+                return NotFound();
+
+            return View(data);
         }
 
         // GET: DepartmentsController/Create
@@ -45,58 +50,63 @@ namespace CoreMVCLayer.Controllers
         // POST: DepartmentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Department department)
         {
-            try
+            if (ModelState.IsValid)
             {
+                deptService.Create(department);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(department);
         }
 
         // GET: DepartmentsController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (!id.HasValue)
+                return NotFound();
+            var data = deptService.FindById(id.Value);
+            return View(data);
         }
 
         // POST: DepartmentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, DepartmentEditVM department)
         {
-            try
+            if (ModelState.IsValid)
             {
+                var data = deptService.FindById(id);
+                data.InjectFrom(department);
+                deptService.Update(data);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            //To do
+            //ViewData["InstructorId"] = new SelectList(deptService.get, "Id", "LastName");
+            return View(deptService.FindById(id));
         }
 
         // GET: DepartmentsController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (!id.HasValue)
+                return NotFound();
+
+            var data = deptService.FindById(id.Value);
+            return View(data);
         }
 
         // POST: DepartmentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(int? id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (!id.HasValue)
+                return NotFound();
+
+            deptService.Delete(id.Value);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

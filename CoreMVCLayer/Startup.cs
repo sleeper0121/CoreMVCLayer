@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Models.EF;
+using Repository.EF;
+using Service.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,12 @@ namespace CoreMVCLayer
                 options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ContosoUniversityContext"))
             );
+
+            services.AddScoped<IRepository<Department>, DepartmentRepository>();
+            //services.AddScoped<IRepository<Course>, CourseRepository>();
+
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            //services.AddScoped<ICourseService, CourseService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
