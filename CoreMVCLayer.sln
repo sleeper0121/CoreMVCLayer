@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMVCLayer", "CoreMVCLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.EF", "Models.EF\Models.EF.csproj", "{36AAF15A-6AB3-4805-8942-4C4809587AB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.EF", "Repository.EF\Repository.EF.csproj", "{877130C4-6D70-43DA-AB17-5AB53758E967}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{36AAF15A-6AB3-4805-8942-4C4809587AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36AAF15A-6AB3-4805-8942-4C4809587AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36AAF15A-6AB3-4805-8942-4C4809587AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{877130C4-6D70-43DA-AB17-5AB53758E967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{877130C4-6D70-43DA-AB17-5AB53758E967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{877130C4-6D70-43DA-AB17-5AB53758E967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{877130C4-6D70-43DA-AB17-5AB53758E967}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
