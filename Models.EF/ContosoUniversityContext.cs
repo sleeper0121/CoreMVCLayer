@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace CoreMVCLayer.Models
+namespace Models.EF
 {
     public partial class ContosoUniversityContext : DbContext
     {
+
         public ContosoUniversityContext()
         {
+          
         }
 
         public ContosoUniversityContext(DbContextOptions<ContosoUniversityContext> options)

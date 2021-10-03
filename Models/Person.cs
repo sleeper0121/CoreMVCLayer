@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace CoreMVCLayer.Models
+namespace Models
 {
     public partial class Person
     {

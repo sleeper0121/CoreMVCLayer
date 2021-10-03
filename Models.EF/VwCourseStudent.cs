@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace CoreMVCLayer.Models
+namespace Models.EF
 {
     public partial class VwCourseStudent
     {
