@@ -36,7 +36,7 @@ namespace Service.EF
             try
             {
                 var entity = _deptRepo.Find(s => s.DepartmentId == id);
-                _deptRepo.Delete(entity);
+                entity.IsDeleted = true;
                 _deptRepo.UnitOfWork.Commit();
                 return true;
             }
@@ -54,7 +54,7 @@ namespace Service.EF
 
         public List<Department> GetAll()
         {
-            var listData = _deptRepo.GetAll().ToList();
+            var listData = _deptRepo.GetAll().Where(p=>p.IsDeleted != true).ToList();
             return listData;
         }
 
