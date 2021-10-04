@@ -33,10 +33,10 @@ namespace CoreMVCLayer
             );
 
             services.AddScoped<IRepository<Department>, DepartmentRepository>();
-            //services.AddScoped<IRepository<Course>, CourseRepository>();
+            services.AddScoped<IRepository<Person>, PersonRepository>();
 
             services.AddScoped<IDepartmentService, DepartmentService>();
-            //services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IPersonService, PersonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

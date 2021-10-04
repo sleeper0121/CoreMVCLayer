@@ -14,15 +14,18 @@ namespace CoreMVCLayer.Controllers
     public class DepartmentsController : Controller
     {
         IDepartmentService deptService;
+        IPersonService personService;
 
-        public DepartmentsController(IDepartmentService _deptService)
+        public DepartmentsController(IDepartmentService _deptService, IPersonService _personService)
         {
             deptService = _deptService;
+            personService = _personService;
         }
 
         // GET: DepartmentsController
         public ActionResult Index()
         {
+            ViewBag.InstructorId = new SelectList(personService.GetAll(), "Id", "FirstName");
             var data = deptService.GetAll();
             return View(data);
         }
@@ -44,6 +47,7 @@ namespace CoreMVCLayer.Controllers
         // GET: DepartmentsController/Create
         public ActionResult Create()
         {
+            ViewBag.InstructorId = new SelectList(personService.GetAll(), "Id", "FirstName");
             return View();
         }
 
@@ -57,6 +61,7 @@ namespace CoreMVCLayer.Controllers
                 deptService.Create(department);
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.InstructorId = new SelectList(personService.GetAll(), "Id", "FirstName");
             return View(department);
         }
 
@@ -66,6 +71,7 @@ namespace CoreMVCLayer.Controllers
             if (!id.HasValue)
                 return NotFound();
             var data = deptService.FindById(id.Value);
+            ViewBag.InstructorId = new SelectList(personService.GetAll(), "Id", "FirstName");
             return View(data);
         }
 
@@ -81,8 +87,7 @@ namespace CoreMVCLayer.Controllers
                 deptService.Update(data);
                 return RedirectToAction(nameof(Index));
             }
-            //To do
-            //ViewData["InstructorId"] = new SelectList(deptService.get, "Id", "LastName");
+            ViewBag.InstructorId = new SelectList(personService.GetAll(), "Id", "FirstName");
             return View(deptService.FindById(id));
         }
 

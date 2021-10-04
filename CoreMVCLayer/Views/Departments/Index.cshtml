@@ -22,13 +22,10 @@
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RowVersion)
+                @Html.DisplayNameFor(model => model.Instructor.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Instructor)
+                @Html.DisplayNameFor(model => model.Instructor.LastName)
             </th>
             <th></th>
         </tr>
@@ -46,13 +43,9 @@
                 @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RowVersion)
-            </td>
+                @Html.DisplayFor(modelItem => item.Instructor.FirstName)
             <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Instructor.Discriminator)
+                @Html.DisplayFor(modelItem => item.Instructor.LastName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |
