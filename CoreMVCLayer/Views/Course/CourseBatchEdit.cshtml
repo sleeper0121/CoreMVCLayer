@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Models.EF.Course>
+
+@{
+    ViewData["Title"] = "CourseBatchEdit";
+}
+
+<h1>CourseBatchEdit</h1>
+
+@if (TempData["CourseBatchEditResult"] != null)
+{
+    <pre>@TempData["CourseBatchEditResult"]</pre>
+}
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Credits)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                var data = Model.ToArray();
+            }
+            @for (int i = 0; i < data.Length; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(modelItem => data[i].CourseId)
+                        @Html.DisplayFor(modelItem => data[i].CourseId)
+                    </td>
+                    <td>
+                        @if (ViewBag.IsEditMode == true)
+                        {
+                            @Html.EditorFor(modelItem => data[i].Title)
+                            @Html.ValidationMessageFor(modelItem => data[i].Title, "", new { @class = "text-danger" })
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => data[i].Title)
+                        }
+                    </td>
+                    <td>
+                        @if (ViewBag.IsEditMode == true)
+                        {
+                            @Html.EditorFor(modelItem => data[i].Credits)
+                            @Html.ValidationMessageFor(modelItem => data[i].Credits, "", new { @class = "text-danger" })
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => data[i].Credits)
+                        }
+                    </td>
+                    <td>
+                        @if (ViewBag.IsEditMode == true)
+                        {
+                            @Html.DropDownListFor(
+                            modelItem => data[i].DepartmentId,
+                            new SelectList(ViewBag.DepartmentList,
+                            "DepartmentId",
+                            "Name", data[i].DepartmentId
+                            ))
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => data[i].Department.Name)
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <input type="submit" value="批次更新" />
+}

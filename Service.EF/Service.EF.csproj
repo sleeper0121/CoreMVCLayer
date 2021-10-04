@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ValueInjecter" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Models.EF\Models.EF.csproj" />
     <ProjectReference Include="..\Repository.EF\Repository.EF.csproj" />
   </ItemGroup>
